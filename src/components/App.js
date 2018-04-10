@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Table from './Table'
-import Search from './Search'
+import Table from "./Table";
+import Search from "./Search";
 import logo from "../logo.svg";
 import "../App.css";
 
@@ -28,14 +28,14 @@ class App extends Component {
     super(props);
     this.state = {
       list,
-      searchTerm: '',
+      searchTerm: ""
     };
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
   }
 
   onSearchChange(event) {
-    this.setState({ searchTerm: event.target.value});
+    this.setState({ searchTerm: event.target.value });
   }
 
   onDismiss(id) {
@@ -47,16 +47,13 @@ class App extends Component {
   render() {
     const { searchTerm, list } = this.state;
     return (
-      <div className="App">
-        <Search
-        value={searchTerm} 
-        onChange={this.onSearchChange}
-        />
-        <Table 
-        list={list}
-        pattern={searchTerm}
-        onDismiss={this.onDismiss}
-        />
+      <div className="page">
+        <div className="interactions">
+          <Search value={searchTerm} onChange={this.onSearchChange}>
+            Search
+          </Search>
+        </div>
+        <Table list={list} pattern={searchTerm} onDismiss={this.onDismiss} />
       </div>
     );
   }
